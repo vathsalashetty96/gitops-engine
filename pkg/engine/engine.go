@@ -18,11 +18,11 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/client-go/rest"
 
-	"github.com/argoproj/gitops-engine/pkg/cache"
-	"github.com/argoproj/gitops-engine/pkg/diff"
-	"github.com/argoproj/gitops-engine/pkg/sync"
-	"github.com/argoproj/gitops-engine/pkg/sync/common"
-	"github.com/argoproj/gitops-engine/pkg/utils/kube"
+	"github.com/vathsalashetty96/gitops-engine/pkg/cache"
+	"github.com/vathsalashetty96/gitops-engine/pkg/diff"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/kube"
 )
 
 const (
