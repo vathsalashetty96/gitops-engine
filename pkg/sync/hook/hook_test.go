@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	"github.com/argoproj/gitops-engine/pkg/sync/common"
-	. "github.com/argoproj/gitops-engine/pkg/utils/testing"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
+	. "github.com/vathsalashetty96/gitops-engine/pkg/utils/testing"
 )
 
 func TestNoHooks(t *testing.T) {
@@ -94,5 +94,5 @@ func TestBothHooks(t *testing.T) {
 }
 
 func example(hook string) *unstructured.Unstructured {
-	return Annotate(NewPod(), "argocd.argoproj.io/hook", hook)
+	return Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", hook)
 }
