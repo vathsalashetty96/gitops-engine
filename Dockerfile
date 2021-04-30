@@ -9,7 +9,7 @@ RUN go mod download
 
 # Perform the build
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /dist/gitops ./agent
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=ppc64le go build -ldflags="-w -s" -o /dist/gitops ./agent
 
 
 FROM alpine/git:v2.24.3
