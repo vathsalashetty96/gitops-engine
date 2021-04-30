@@ -25,8 +25,8 @@ import (
 	watchutil "k8s.io/client-go/tools/watch"
 	"k8s.io/klog/v2/klogr"
 
-	"github.com/argoproj/gitops-engine/pkg/utils/kube"
-	"github.com/argoproj/gitops-engine/pkg/utils/tracing"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/kube"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/tracing"
 )
 
 const (
