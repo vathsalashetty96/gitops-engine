@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	"github.com/argoproj/gitops-engine/pkg/sync/common"
-	. "github.com/argoproj/gitops-engine/pkg/utils/testing"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
+	. "github.com/vathsalashetty96/gitops-engine/pkg/utils/testing"
 )
 
 func TestSyncPhaseNone(t *testing.T) {
@@ -49,7 +49,7 @@ func TestSyncDuplicatedPhases(t *testing.T) {
 }
 
 func pod(hookType string) *unstructured.Unstructured {
-	return Annotate(NewPod(), "argocd.argoproj.io/hook", hookType)
+	return Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", hookType)
 }
 
 func podWithHelmHook(hookType string) *unstructured.Unstructured {
