@@ -29,9 +29,9 @@ import (
 	cmdutil "k8s.io/kubectl/pkg/cmd/util"
 	"k8s.io/kubectl/pkg/scheme"
 
-	"github.com/argoproj/gitops-engine/pkg/diff"
-	"github.com/argoproj/gitops-engine/pkg/utils/io"
-	"github.com/argoproj/gitops-engine/pkg/utils/tracing"
+	"github.com/vathsalashetty96/gitops-engine/pkg/diff"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/io"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/tracing"
 )
 
 type CleanupFunc func()
