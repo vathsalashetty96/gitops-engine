@@ -4,18 +4,18 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	"github.com/argoproj/gitops-engine/pkg/utils/kube"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/kube"
 )
 
 const (
 	// AnnotationSyncOptions is a comma-separated list of options for syncing
-	AnnotationSyncOptions = "argocd.argoproj.io/sync-options"
+	AnnotationSyncOptions = "argocd.vathsalashetty96.io/sync-options"
 	// AnnotationSyncWave indicates which wave of the sync the resource or hook should be in
-	AnnotationSyncWave = "argocd.argoproj.io/sync-wave"
+	AnnotationSyncWave = "argocd.vathsalashetty96.io/sync-wave"
 	// AnnotationKeyHook contains the hook type of a resource
-	AnnotationKeyHook = "argocd.argoproj.io/hook"
+	AnnotationKeyHook = "argocd.vathsalashetty96.io/hook"
 	// AnnotationKeyHookDeletePolicy is the policy of deleting a hook
-	AnnotationKeyHookDeletePolicy = "argocd.argoproj.io/hook-delete-policy"
+	AnnotationKeyHookDeletePolicy = "argocd.vathsalashetty96.io/hook-delete-policy"
 
 	// Sync option that disables dry run in resource is missing in the cluster
 	SyncOptionSkipDryRunOnMissingResource = "SkipDryRunOnMissingResource=true"
