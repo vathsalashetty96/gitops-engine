@@ -6,12 +6,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	"github.com/argoproj/gitops-engine/pkg/sync/common"
-	. "github.com/argoproj/gitops-engine/pkg/utils/testing"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
+	. "github.com/vathsalashetty96/gitops-engine/pkg/utils/testing"
 )
 
 func newHook(hookType common.HookType) *unstructured.Unstructured {
-	return Annotate(NewPod(), "argocd.argoproj.io/hook", string(hookType))
+	return Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", string(hookType))
 }
 
 func Test_syncTask_hookType(t *testing.T) {
@@ -46,31 +46,31 @@ func Test_syncTask_hasHookDeletePolicy(t *testing.T) {
 	assert.False(t, (&syncTask{targetObj: NewPod()}).hasHookDeletePolicy(common.HookDeletePolicyHookSucceeded))
 	assert.False(t, (&syncTask{targetObj: NewPod()}).hasHookDeletePolicy(common.HookDeletePolicyHookFailed))
 	// must be hook
-	assert.False(t, (&syncTask{targetObj: Annotate(NewPod(), "argocd.argoproj.io/hook-delete-policy", "BeforeHookCreation")}).hasHookDeletePolicy(common.HookDeletePolicyBeforeHookCreation))
-	assert.True(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "BeforeHookCreation")}).hasHookDeletePolicy(common.HookDeletePolicyBeforeHookCreation))
-	assert.True(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "HookSucceeded")}).hasHookDeletePolicy(common.HookDeletePolicyHookSucceeded))
-	assert.True(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "HookFailed")}).hasHookDeletePolicy(common.HookDeletePolicyHookFailed))
+	assert.False(t, (&syncTask{targetObj: Annotate(NewPod(), "argocd.vathsalashetty96.io/hook-delete-policy", "BeforeHookCreation")}).hasHookDeletePolicy(common.HookDeletePolicyBeforeHookCreation))
+	assert.True(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "BeforeHookCreation")}).hasHookDeletePolicy(common.HookDeletePolicyBeforeHookCreation))
+	assert.True(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "HookSucceeded")}).hasHookDeletePolicy(common.HookDeletePolicyHookSucceeded))
+	assert.True(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "HookFailed")}).hasHookDeletePolicy(common.HookDeletePolicyHookFailed))
 }
 
 func Test_syncTask_deleteOnPhaseCompletion(t *testing.T) {
 	assert.False(t, (&syncTask{liveObj: NewPod()}).deleteOnPhaseCompletion())
 	// must be hook
-	assert.True(t, (&syncTask{operationState: common.OperationSucceeded, liveObj: Annotate(Annotate(NewPod(), "argocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "HookSucceeded")}).deleteOnPhaseCompletion())
-	assert.True(t, (&syncTask{operationState: common.OperationFailed, liveObj: Annotate(Annotate(NewPod(), "argocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "HookFailed")}).deleteOnPhaseCompletion())
+	assert.True(t, (&syncTask{operationState: common.OperationSucceeded, liveObj: Annotate(Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "HookSucceeded")}).deleteOnPhaseCompletion())
+	assert.True(t, (&syncTask{operationState: common.OperationFailed, liveObj: Annotate(Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "HookFailed")}).deleteOnPhaseCompletion())
 }
 
 func Test_syncTask_deleteBeforeCreation(t *testing.T) {
 	assert.False(t, (&syncTask{liveObj: NewPod()}).deleteBeforeCreation())
 	// must be hook
-	assert.False(t, (&syncTask{liveObj: Annotate(NewPod(), "argocd.argoproj.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
+	assert.False(t, (&syncTask{liveObj: Annotate(NewPod(), "argocd.vathsalashetty96.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
 	// no need to delete if no live obj
-	assert.False(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argoocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
-	assert.True(t, (&syncTask{liveObj: Annotate(Annotate(NewPod(), "argocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
-	assert.True(t, (&syncTask{liveObj: Annotate(Annotate(NewPod(), "argocd.argoproj.io/hook", "Sync"), "argocd.argoproj.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
+	assert.False(t, (&syncTask{targetObj: Annotate(Annotate(NewPod(), "argoocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
+	assert.True(t, (&syncTask{liveObj: Annotate(Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
+	assert.True(t, (&syncTask{liveObj: Annotate(Annotate(NewPod(), "argocd.vathsalashetty96.io/hook", "Sync"), "argocd.vathsalashetty96.io/hook-delete-policy", "BeforeHookCreation")}).deleteBeforeCreation())
 
 }
 
 func Test_syncTask_wave(t *testing.T) {
 	assert.Equal(t, 0, (&syncTask{targetObj: NewPod()}).wave())
-	assert.Equal(t, 1, (&syncTask{targetObj: Annotate(NewPod(), "argocd.argoproj.io/sync-wave", "1")}).wave())
+	assert.Equal(t, 1, (&syncTask{targetObj: Annotate(NewPod(), "argocd.vathsalashetty96.io/sync-wave", "1")}).wave())
 }
