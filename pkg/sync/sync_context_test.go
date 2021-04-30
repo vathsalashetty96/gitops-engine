@@ -19,13 +19,13 @@ import (
 	testcore "k8s.io/client-go/testing"
 	"k8s.io/klog/v2/klogr"
 
-	"github.com/argoproj/gitops-engine/pkg/diff"
-	"github.com/argoproj/gitops-engine/pkg/health"
-	synccommon "github.com/argoproj/gitops-engine/pkg/sync/common"
-	"github.com/argoproj/gitops-engine/pkg/utils/kube"
-	"github.com/argoproj/gitops-engine/pkg/utils/kube/kubetest"
-	. "github.com/argoproj/gitops-engine/pkg/utils/testing"
-	testingutils "github.com/argoproj/gitops-engine/pkg/utils/testing"
+	"github.com/vathsalashetty96/gitops-engine/pkg/diff"
+	"github.com/vathsalashetty96/gitops-engine/pkg/health"
+	synccommon "github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/kube"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/kube/kubetest"
+	. "github.com/vathsalashetty96/gitops-engine/pkg/utils/testing"
+	testingutils "github.com/vathsalashetty96/gitops-engine/pkg/utils/testing"
 )
 
 func newTestSyncCtx(opts ...SyncOpt) *syncContext {
@@ -178,7 +178,7 @@ func TestSyncCustomResources(t *testing.T) {
 
 			cr := testingutils.Unstructured(`
 {
-  "apiVersion": "argoproj.io/v1",
+  "apiVersion": "vathsalashetty96.io/v1",
   "kind": "TestCrd",
   "metadata": {
     "name": "my-resource"
