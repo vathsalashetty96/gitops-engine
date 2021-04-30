@@ -8,8 +8,8 @@ import (
 	apiv1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	"github.com/argoproj/gitops-engine/pkg/sync/common"
-	. "github.com/argoproj/gitops-engine/pkg/utils/testing"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
+	. "github.com/vathsalashetty96/gitops-engine/pkg/utils/testing"
 )
 
 func Test_syncTasks_kindOrder(t *testing.T) {
@@ -88,7 +88,7 @@ var unsortedTasks = syncTasks{
 			Object: map[string]interface{}{
 				"metadata": map[string]interface{}{
 					"annotations": map[string]interface{}{
-						"argocd.argoproj.io/sync-wave": "1",
+						"argocd.vathsalashetty96.io/sync-wave": "1",
 					},
 				},
 			},
@@ -117,7 +117,7 @@ var unsortedTasks = syncTasks{
 			Object: map[string]interface{}{
 				"metadata": map[string]interface{}{
 					"annotations": map[string]interface{}{
-						"argocd.argoproj.io/sync-wave": "-1",
+						"argocd.vathsalashetty96.io/sync-wave": "-1",
 					},
 				},
 			},
@@ -157,7 +157,7 @@ var sortedTasks = syncTasks{
 			Object: map[string]interface{}{
 				"metadata": map[string]interface{}{
 					"annotations": map[string]interface{}{
-						"argocd.argoproj.io/sync-wave": "-1",
+						"argocd.vathsalashetty96.io/sync-wave": "-1",
 					},
 				},
 			},
@@ -225,7 +225,7 @@ var sortedTasks = syncTasks{
 			Object: map[string]interface{}{
 				"metadata": map[string]interface{}{
 					"annotations": map[string]interface{}{
-						"argocd.argoproj.io/sync-wave": "1",
+						"argocd.vathsalashetty96.io/sync-wave": "1",
 					},
 				},
 			},
@@ -272,7 +272,7 @@ var unnamedTasks = syncTasks{
 			Object: map[string]interface{}{
 				"metadata": map[string]interface{}{
 					"annotations": map[string]interface{}{
-						"argocd.argoproj.io/sync-wave": "-1",
+						"argocd.vathsalashetty96.io/sync-wave": "-1",
 					},
 				},
 			},
@@ -322,7 +322,7 @@ var unnamedTasks = syncTasks{
 			Object: map[string]interface{}{
 				"metadata": map[string]interface{}{
 					"annotations": map[string]interface{}{
-						"argocd.argoproj.io/sync-wave": "1",
+						"argocd.vathsalashetty96.io/sync-wave": "1",
 					},
 				},
 			},
@@ -397,7 +397,7 @@ func TestSyncTasksSort_NamespaceAndObjectInNamespace(t *testing.T) {
 				"metadata": map[string]interface{}{
 					"name": "myNamespace1",
 					"annotations": map[string]string{
-						"argocd.argoproj.io/sync-wave": "1",
+						"argocd.vathsalashetty96.io/sync-wave": "1",
 					},
 				},
 			},
@@ -410,7 +410,7 @@ func TestSyncTasksSort_NamespaceAndObjectInNamespace(t *testing.T) {
 				"metadata": map[string]interface{}{
 					"name": "myNamespace2",
 					"annotations": map[string]string{
-						"argocd.argoproj.io/sync-wave": "2",
+						"argocd.vathsalashetty96.io/sync-wave": "2",
 					},
 				},
 			},
@@ -433,7 +433,7 @@ func TestSyncTasksSort_CRDAndCR(t *testing.T) {
 		targetObj: &unstructured.Unstructured{
 			Object: map[string]interface{}{
 				"kind":       "Workflow",
-				"apiVersion": "argoproj.io/v1",
+				"apiVersion": "vathsalashetty96.io/v1",
 			},
 		},
 	}
@@ -443,7 +443,7 @@ func TestSyncTasksSort_CRDAndCR(t *testing.T) {
 				"apiVersion": "apiextensions.k8s.io/v1",
 				"kind":       "CustomResourceDefinition",
 				"spec": map[string]interface{}{
-					"group": "argoproj.io",
+					"group": "vathsalashetty96.io",
 					"names": map[string]interface{}{
 						"kind": "Workflow",
 					},
