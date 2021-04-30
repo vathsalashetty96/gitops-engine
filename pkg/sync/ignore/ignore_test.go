@@ -5,15 +5,15 @@ import (
 
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	"github.com/argoproj/gitops-engine/pkg/sync/common"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
 
 	"github.com/stretchr/testify/assert"
 
-	. "github.com/argoproj/gitops-engine/pkg/utils/testing"
+	. "github.com/vathsalashetty96/gitops-engine/pkg/utils/testing"
 )
 
 func newHook(obj *unstructured.Unstructured, hookType common.HookType) *unstructured.Unstructured {
-	return Annotate(obj, "argocd.argoproj.io/hook", string(hookType))
+	return Annotate(obj, "argocd.vathsalashetty96.io/hook", string(hookType))
 }
 
 func TestIgnore(t *testing.T) {
