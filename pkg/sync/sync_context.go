@@ -24,13 +24,13 @@ import (
 	"k8s.io/klog/v2/klogr"
 	cmdutil "k8s.io/kubectl/pkg/cmd/util"
 
-	"github.com/argoproj/gitops-engine/pkg/diff"
-	"github.com/argoproj/gitops-engine/pkg/health"
-	"github.com/argoproj/gitops-engine/pkg/sync/common"
-	"github.com/argoproj/gitops-engine/pkg/sync/hook"
-	resourceutil "github.com/argoproj/gitops-engine/pkg/sync/resource"
-	"github.com/argoproj/gitops-engine/pkg/utils/kube"
-	kubeutil "github.com/argoproj/gitops-engine/pkg/utils/kube"
+	"github.com/vathsalashetty96/gitops-engine/pkg/diff"
+	"github.com/vathsalashetty96/gitops-engine/pkg/health"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/common"
+	"github.com/vathsalashetty96/gitops-engine/pkg/sync/hook"
+	resourceutil "github.com/vathsalashetty96/gitops-engine/pkg/sync/resource"
+	"github.com/vathsalashetty96/gitops-engine/pkg/utils/kube"
+	kubeutil "github.com/vathsalashetty96/gitops-engine/pkg/utils/kube"
 )
 
 type reconciledResource struct {
