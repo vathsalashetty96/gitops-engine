@@ -49,7 +49,7 @@ spec:
         - --path
         - guestbook
         - --namespaced
-        image: argoproj/gitops-agent:latest
+        image: vathsalashetty96/gitops-agent:latest
         name: gitops-agent
         volumeMounts:
         - mountPath: /tmp/git
@@ -61,7 +61,7 @@ spec:
         - repo
         env:
         - name: GIT_SYNC_REPO
-          value: https://github.com/argoproj/argocd-example-apps
+          value: https://github.com/vathsalashetty96/argocd-example-apps
         image: k8s.gcr.io/git-sync:v3.1.6
         name: git-sync
         volumeMounts:
